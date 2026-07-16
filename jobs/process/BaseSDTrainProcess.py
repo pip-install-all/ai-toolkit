@@ -1852,6 +1852,13 @@ class BaseSDTrainProcess(BaseTrainProcess):
                 extra_weights = None
                 if latest_save_path is not None and not self.train_config.merge_network_on_save:
                     print_acc(f"#### IMPORTANT RESUMING FROM {latest_save_path} ####")
+
+                    ###RUB solve problem resuming from json file instead of safetensors
+                    if latest_save_path.endswith('.json'):
+                        print_acc(f"####---- resolved JSON issue...RUB ####")
+                        latest_save_path = latest_save_path.replace('.metadata.json', '.safetensors')
+                    ###RUB
+
                     print_acc(f"Loading from {latest_save_path}")
                     extra_weights = self.load_weights(latest_save_path)
                     self.network.multiplier = 1.0
