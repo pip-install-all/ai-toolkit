@@ -656,7 +656,7 @@ class ToolkitNetworkMixin:
                     weights_sd = load_file(file)
                 else:
                     # weights_sd = torch.load(file, map_location=
-                    ###RUB
+                    ###PIPI
                     weights_sd = torch.load(file, map_location="cpu", weights_only=False)
 
         else:
